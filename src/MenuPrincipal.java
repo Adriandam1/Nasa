@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package nasa;
+
 
 import java.awt.*;
 import javax.swing.*;
@@ -15,12 +15,7 @@ public class MenuPrincipal  extends JFrame{
     public MenuPrincipal(){
         JPanel menu1 = new JPanel();
         menu1.setLayout(null);
-   
-        JButton botonMisiones = new JButton("MENU MISIONES");
-        botonMisiones.setBounds(350,100,150,20);
-    
-        
-        
+             
         // creo mi objeto con clase Toolkit
         Toolkit mipantalla= Toolkit.getDefaultToolkit();
         // Uso metodo "getScreenSize" para sacar el tamaño de la pantalla(nos devuelve un objeto de tipo "Dimension")
@@ -39,8 +34,20 @@ public class MenuPrincipal  extends JFrame{
         setVisible(true);
         //Titulo menu principal
         setTitle("Menu principal de la NASA");
-        // Indicamos que se termine el programa cuando se cierre la pantalla
+        // Añadimos icono esquina superior izquierda;
+        Image miIcono= mipantalla.getImage("src/nasa.gif");
+        setIconImage(miIcono);
+        // Indicamos que se termine el programa cuando se cierre la pantalla        
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        JButton botonMisiones = new JButton("MENU MISIONES");
+        botonMisiones.setBounds(anchoPantalla/4,alturaPantalla/4,150,20);
+        menu1.add(botonMisiones);
+        
+        
+        
+        
+        
         
         
     }   
