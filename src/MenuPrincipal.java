@@ -5,6 +5,7 @@
 
 
 import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
 
 /**
@@ -31,24 +32,58 @@ public class MenuPrincipal  extends JFrame{
         // Hacemos que no se pueda redimensionar
         setResizable(false);
         // Se tiene que poder ver
-        setVisible(true);
+        //setVisible(true);
         //Titulo menu principal
         setTitle("Menu principal de la NASA");
         // Añadimos icono esquina superior izquierda;
         Image miIcono= mipantalla.getImage("src/nasa.gif");
         setIconImage(miIcono);
         // Indicamos que se termine el programa cuando se cierre la pantalla        
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-        JButton botonMisiones = new JButton("MENU MISIONES");
-        botonMisiones.setBounds(anchoPantalla/4,alturaPantalla/4,150,20);
-        menu1.add(botonMisiones);
+        //-----------------------------Boton
+        LaminaBotones milamina= new LaminaBotones();
+        add(milamina);
+    }
+        
+    class LaminaBotones extends JPanel implements ActionListener{
+
+        JButton botonMisiones = new JButton("AZUL");
+        JButton botonNaves = new JButton("ROJO");
+        JButton botonTripulacion = new JButton("AMARILLO");
+
+        public LaminaBotones(){
+            //botonMisiones.setBounds(MenuPrincipal.anchoPantalla/4,alturaPantalla/4,150,20);
+            add(botonMisiones);
+            add(botonNaves);
+            add(botonTripulacion);
+            botonMisiones.addActionListener(this);
+            botonNaves.addActionListener(this);
+            botonTripulacion.addActionListener(this);
+        }
+        public void actionPerformed(ActionEvent e){
+            Object botonPulsado=e.getSource();
+            
+            if (botonPulsado == botonMisiones){            
+                setBackground(Color.BLUE);
+            }
+            else if (botonPulsado == botonNaves){
+                setBackground(Color.RED);
+            }
+            else if (botonPulsado == botonTripulacion){
+                setBackground(Color.YELLOW);
+            }
+            //EXCEPCION
+            else {
+                setBackground(Color.BLACK);
+            }
+        }
+    }
+         
         
         
         
         
         
-        
-        
-    }   
-}
+}   
+
